@@ -408,4 +408,22 @@ public class Lock9View extends ViewGroup {
 
     }
 
+    public void setNode(Drawable nodeSrc, Drawable nodeOnSrc) {
+        this.nodeSrc = nodeSrc;
+        this.nodeOnSrc = nodeOnSrc;
+
+        for (int i = 0; i < getChildCount(); i++) {
+            View child = getChildAt(i);
+            removeView(child);
+            i--;
+        }
+
+        for (int i = 0; i < 9; i++) {
+            NodeView node = new NodeView(getContext(), i + 1);
+            addView(node);
+        }
+
+        invalidate();
+    }
+
 }
