@@ -412,18 +412,12 @@ public class Lock9View extends ViewGroup {
         this.nodeSrc = nodeSrc;
         this.nodeOnSrc = nodeOnSrc;
 
-        for (int i = 0; i < getChildCount(); i++) {
-            View child = getChildAt(i);
-            removeView(child);
-            i--;
-        }
-
         for (int i = 0; i < 9; i++) {
-            NodeView node = new NodeView(getContext(), i + 1);
-            addView(node);
+            View child = getChildAt(i);
+            if (child instanceof NodeView) {
+                child.setBackgroundDrawable(nodeSrc);
+            }
         }
-
-        invalidate();
     }
 
 }
